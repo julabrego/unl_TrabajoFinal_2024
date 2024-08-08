@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0l45y17ildax"]
+
+[ext_resource type="PackedScene" uid="uid://dfpe4pue6oai5" path="res://Assets/Scenes/Scenarios/prototype-scenario.tscn" id="1_y18q6"]
+[ext_resource type="PackedScene" uid="uid://c7n8xlvoc1dep" path="res://Assets/Scenes/Characters/Empanada/empanada.tscn" id="2_hn7vq"]
+
+[node name="World" type="Node3D"]
+
+[node name="PrototypeScenario" parent="." instance=ExtResource("1_y18q6")]
+
+[node name="Empanada" parent="." instance=ExtResource("2_hn7vq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48024, 0)
+JUMP_FORCE = null
+GRAVITY = null
+attack = null
+
+[node name="Camera3D" type="Camera3D" parent="Empanada"]
+transform = Transform3D(1, 0, 0, 0, 0.986159, 0.165805, 0, -0.165805, 0.986159, 0, 3.83328, 19.5299)
+fov = 20.9
+size = 4.727

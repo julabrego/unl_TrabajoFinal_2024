@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7n8xlvoc1dep"]
+
+[ext_resource type="Texture2D" uid="uid://qbnrh3wwc7f7" path="res://Assets/Resources/Textures/Empanadas/EmpanadaSketch.png" id="1_03la8"]
+[ext_resource type="Script" path="res://Assets/Scripts/Characters/Empanada/empanada-movement.gd" id="1_5rpsi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7no7e"]
+radius = 0.365421
+height = 2.17886
+
+[node name="Empanada" type="CharacterBody3D"]
+script = ExtResource("1_5rpsi")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_03la8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000934005, 0)
+shape = SubResource("CapsuleShape3D_7no7e")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
