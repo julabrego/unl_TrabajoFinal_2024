@@ -11,7 +11,7 @@ size = Vector3(33, 0.0412598, 33)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8f7k"]
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_n60my")
-uv1_scale = Vector3(10, 10, 10)
+uv1_scale = Vector3(30, 30, 30)
 texture_filter = 5
 
 [node name="PrototypeScenario" type="Node3D"]
@@ -26,7 +26,7 @@ mesh = SubResource("BoxMesh_xmodv")
 surface_material_override/0 = SubResource("StandardMaterial3D_x8f7k")
 
 [node name="WallBottom" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, -16.3336)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 8.66187)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallBottom"]
 shape = SubResource("BoxShape3D_56138")
@@ -34,6 +34,12 @@ shape = SubResource("BoxShape3D_56138")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallBottom"]
 mesh = SubResource("BoxMesh_xmodv")
 surface_material_override/0 = SubResource("StandardMaterial3D_x8f7k")
+
+[node name="WallFront" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 15.8795)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallFront"]
+shape = SubResource("BoxShape3D_56138")
 
 [node name="WallLeft" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -16, 16.5446, -0.333609)

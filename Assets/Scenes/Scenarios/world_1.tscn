@@ -35,9 +35,10 @@ directional_shadow_max_distance = 25.0
 [node name="PrototypeScenario" parent="." instance=ExtResource("1_y18q6")]
 
 [node name="Empanada" parent="." instance=ExtResource("2_hn7vq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48024, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48024, 13.6956)
 
 [node name="Camera3D" type="Camera3D" parent="Empanada"]
-transform = Transform3D(1, 0, 0, 0, 0.986159, 0.165805, 0, -0.165805, 0.986159, 0, 3.83328, 19.5299)
+transform = Transform3D(1, 0, 0, 0, 0.968091, 0.2506, 0, -0.2506, 0.968091, 0, 5.73022, 18.8)
 fov = 20.9
-size = 4.727
+size = 8.598
+near = 0.065

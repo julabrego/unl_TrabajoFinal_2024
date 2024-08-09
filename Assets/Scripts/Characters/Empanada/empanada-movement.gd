@@ -1,18 +1,20 @@
 extends CharacterBody3D
 
-@export var SPEED := 3
+@export var SPEED := 4
 @export var JUMP_FORCE := 8
 @export var GRAVITY := 19.8
-@export var attack := ["Attack_1", "Attack_2"]
+@export var attack := ["Attack_1"]
 
 var attack_index := -1
-var timer := 0.5
-var cooldown := 0.5
+var timer := 0.0
 var attacking := false
 
 var motion := Vector3()
+var animation := ""
 
 @onready var sprite : Sprite3D = $Sprite3D
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var ray_cast : RayCast3D = $RayCast3D
 @onready var speed := SPEED
 
 func _process(delta) -> void:
@@ -24,10 +26,9 @@ func _process(delta) -> void:
 	
 	if Input.is_action_just_pressed("ui_jump") and is_on_ground():
 		motion.y = JUMP_FORCE
-	elif Input.is_action_just_pressed("ui_attack") and is_on_ground() and timer > 0.3:
-		attacking = true
-		timer = 0
-		attack_index = (attack_index + 1) % attack.size()
+		attacking = false
+	elif Input.is_action_just_pressed("ui_attack") and is_on_ground() and not attacking:
+		punch()
 	
 	_flip()
 	_animations(delta)
@@ -43,21 +44,30 @@ func _flip() -> void:
 func _animations(delta : float) -> void:
 	if is_on_ground():
 		if (attacking):
-			_stop_movement()
-			timer += delta
-			if(timer >= cooldown):
-				attacking = false
-				attack_index = -1
-		#elif motion.x != 0 || motion.z != 0:
-			#_set_animation("Walk")
-		#else:
-			#_set_animation("Idle")
+			stop_movement()
+		elif motion.x != 0 || motion.z != 0:
+			set_animation("idle")
+		else:
+			set_animation("idle")
 	#else:
 		#_set_animation("Jump")
 
-func _stop_movement() -> void:
+func stop_movement() -> void:
 	motion.x = 0
 	motion.z = 0
 
 func is_on_ground() -> bool:
-	return $RayCast3D.is_colliding()
+	return ray_cast.is_colliding()
+	
+func set_animation(anim: String) -> void:
+	if animation != anim:
+		animation = anim
+		animation_player.play(animation)
+
+func punch() -> void:
+	attacking = true
+	attack_index = (attack_index + 1) % attack.size()
+	set_animation(attack[attack_index])
+
+func end_attack() -> void:
+	attacking = false
