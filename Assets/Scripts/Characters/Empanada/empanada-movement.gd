@@ -7,7 +7,6 @@ extends CharacterBody3D
 @export var attack := ["Attack_1"]
 
 var attack_index := -1
-var timer := 0.0
 var attacking := false
 
 var motion := Vector3()

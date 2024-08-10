@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxiiwja5ytvl8"]
+
+[ext_resource type="PackedScene" uid="uid://dfpe4pue6oai5" path="res://Assets/Scenes/Scenarios/prototype-scenario.tscn" id="1_l6vmn"]
+[ext_resource type="PackedScene" uid="uid://xtqst0tpaoeo" path="res://Assets/Scenes/Characters/KetchupSmall/ketchup_small.tscn" id="3_5mid5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rhm72"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_vvjwq"]
+sky_material = SubResource("ProceduralSkyMaterial_rhm72")
+
+[sub_resource type="Environment" id="Environment_twjta"]
+background_mode = 2
+sky = SubResource("Sky_vvjwq")
+ambient_light_source = 3
+ambient_light_color = Color(0.775063, 0.775063, 0.775063, 1)
+tonemap_mode = 2
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_twjta")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5, -0.866025, 0, 0.866025, -0.5, 0, 56, 0)
+shadow_enabled = true
+shadow_bias = 0.03
+shadow_normal_bias = 1.5
+shadow_blur = 1.5
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 25.0
+
+[node name="PrototypeScenario" parent="." instance=ExtResource("1_l6vmn")]
+
+[node name="KetchupSmall" parent="." instance=ExtResource("3_5mid5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59067, 1.14051, 13.8652)
+
+[node name="Camera3D" type="Camera3D" parent="KetchupSmall"]
+transform = Transform3D(1, 0, 0, 0, 0.968091, 0.2506, 0, -0.2506, 0.968091, -3.59067, 7.06995, 18.6304)
+fov = 20.9
+size = 8.598
+near = 0.065
