@@ -65,7 +65,7 @@ Desafío atractivo: asegurar un nivel de dificultad que sea desafiante pero just
 Narrativa enganchante: desarrollar una narrativa atractiva en la que los jugadores deben derrotar a Mr. Hot Dog y salvar al mundo de la comida chatarra, y contarla de una manera equilibrada que no interfiera el flujo del juego.
 
 ### 11. Plazos de desarrollo
-Tiempo total estimado: entre 14 y 20 meses
-Concepto y preproducción: 4 a 6 meses
-Desarrollo: 6 a 8 meses
-Prueba y ajustes: 4 a 6 meses
+- Tiempo total estimado: entre 14 y 20 meses
+- Concepto y preproducción: 4 a 6 meses
+- Desarrollo: 6 a 8 meses
+- Prueba y ajustes: 4 a 6 meses
