@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xtqst0tpaoeo"]
+[gd_scene load_steps=10 format=3 uid="uid://xtqst0tpaoeo"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Characters/KetchupSmall/ketchup_small.gd" id="1_if1ed"]
 [ext_resource type="Texture2D" uid="uid://bovmxttgxhpmq" path="res://Assets/Resources/Textures/ketchup_small.png" id="2_a1yxx"]
@@ -47,6 +47,13 @@ _data = {
 height = 2.27576
 radius = 5.33023
 
+[sub_resource type="SphereMesh" id="SphereMesh_2mdq1"]
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uc6v1"]
+albedo_color = Color(1, 1, 1, 0)
+ao_enabled = true
+
 [node name="KetchupSmall" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_if1ed")
 SPEED = null
@@ -64,7 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125324, 0)
 shape = SubResource("CapsuleShape3D_7no7e")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305, 0)
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -81,6 +88,12 @@ wait_time = 0.15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VisibleArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476054, 0)
 shape = SubResource("CylinderShape3D_rje8y")
+
+[node name="ShadowSphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.575, 0, 0, 0, 1, 0, 0, 0, 0.595, 0, 0, 0)
+cast_shadow = 3
+mesh = SubResource("SphereMesh_2mdq1")
+surface_material_override/0 = SubResource("StandardMaterial3D_uc6v1")
 
 [connection signal="timeout" from="ReceiveDamageTimer" to="." method="_on_receive_damage_timer_timeout"]
 [connection signal="body_entered" from="VisibleArea" to="." method="_on_visible_area_body_entered"]
