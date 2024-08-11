@@ -5,9 +5,10 @@ extends CharacterBody3D
 @export var JUMP_FORCE := 5
 @export var GRAVITY := 19.8
 @export var target: Node3D = self
-@export var life := 50
+@export var health := 50
 @export var JUMPS_TO_ATTACK := 2
 @export var JUMPS_TO_STOP_ATTACKING := 4
+@export var DISTANCE_TRESHOLD := 0.5
 
 var motion := Vector3()
 var animation := ""
@@ -36,12 +37,14 @@ func _physics_process(delta) -> void:
 
 	_move(delta)
 
+func is_attacking() -> bool:
+	return is_jumping_to_target
+	
 func receive_damage(amount: int, origin: String) -> void:
-	life -= amount
+	health -= amount
 	is_receiving_damage = true
 	receiving_damage_timer.start()
-	jumps_counter = 0
-	is_jumping_to_target = false
+	_reset_jumps_count()
 
 	match origin:
 		'LEFT':
@@ -50,11 +53,20 @@ func receive_damage(amount: int, origin: String) -> void:
 			motion.x = -10
 		_:
 			motion.x = 0
-	if life <= 0:
+
+	if health <= 0:
 		queue_free()
 
 func get_current_attack_damage() -> int:
 	return current_attack_damage
+
+func handle_hit() -> void:
+	_stop_movement()
+	_reset_jumps_count()
+
+func _reset_jumps_count() -> void:
+	jumps_counter = 0
+	is_jumping_to_target = false
 
 func _move(delta: float) -> void:
 	if is_receiving_damage:
@@ -76,7 +88,7 @@ func _handle_jump_direction() -> void:
 	if is_jumping_to_target and jumps_counter >= JUMPS_TO_STOP_ATTACKING:
 			_stop_following_target()
 		
-	if (x_distance > 2 or z_distance > 2) and not is_jumping_to_target and jumps_counter >= JUMPS_TO_ATTACK:
+	if (x_distance > DISTANCE_TRESHOLD or z_distance > DISTANCE_TRESHOLD) and not is_jumping_to_target and jumps_counter >= JUMPS_TO_ATTACK:
 		is_jumping_to_target = true
 		
 	if is_jumping_to_target:

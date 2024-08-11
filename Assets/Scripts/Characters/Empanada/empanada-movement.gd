@@ -14,10 +14,12 @@ var motion := Vector3()
 var animation := ""
 var is_control_enabled := true
 var health := 100
+var is_receiving_damage := false
 
 @onready var sprite : Sprite3D = $Sprite3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var ray_cast : RayCast3D = $RayCast3D
+@onready var receiving_damage_timer : Timer = $ReceiveDamageTimer
 
 func _process(delta) -> void:
 	_animations(delta)
@@ -37,7 +39,7 @@ func _handle_inputs() -> void:
 	_walk()
 	
 	if _is_on_ground():
-		if not is_attacking:
+		if not is_attacking and not is_receiving_damage:
 			if _player_is_triggering_jump():
 				_jump()
 			elif _player_is_triggering_attack():
@@ -46,20 +48,27 @@ func _handle_inputs() -> void:
 			_handle_attack_movement()
 
 func _walk() -> void:
-	motion.x = _get_horizontal_input_axis() * SPEED
-	motion.z = _get_vertical_input_axis() * SPEED
+	if not is_receiving_damage:
+		motion.x = _get_horizontal_input_axis() * SPEED
+		motion.z = _get_vertical_input_axis() * SPEED
 
 func _jump() -> void:
 	motion.y = JUMP_FORCE
 
 func _move(delta: float) -> void:
+	if is_receiving_damage:
+		motion.x *= 0.9
+		motion.y = 0
+		print(motion.x)
+	else:
+		_fall(delta)
+		_handle_attack_movement()
+
 	velocity = motion
-	_fall(delta)
-	_handle_attack_movement()
 	move_and_slide()
 
 func _handle_attack_movement() -> void:
-	if is_attacking:
+	if is_attacking and not is_receiving_damage:
 		_stop_movement()
 	
 func _animations(delta : float) -> void:
@@ -76,13 +85,12 @@ func _animations(delta : float) -> void:
 		# _set_animation("jumping")
 		# _set_animation("falling")
 
-
 func _fall(delta: float) -> void:
 	if not _is_on_ground():
 		motion.y -= GRAVITY * delta
 
 func _flip() -> void:
-	if motion.x != 0:
+	if motion.x != 0 and not is_receiving_damage:
 		sprite.flip_h = false if motion.x > 0 else true	
 		$Sprite3D/AttackHitbox.position.x = 1 if motion.x > 0 else -1
 
@@ -124,10 +132,26 @@ func _on_attack_hitbox_body_entered(body:Node3D):
 
 func _on_hit_box_body_entered(body:Node3D):
 	if body.is_in_group("Enemy"):
-		var origin = 'LEFT' if body.position.x < position.x else 'RIGHT'
-		receive_damage(body.get_current_attack_damage(), origin)
+		if body.is_attacking():
+			var origin = 'LEFT' if body.position.x < position.x else 'RIGHT'
+			receive_damage(body.get_current_attack_damage(), origin)
+			body.handle_hit()
 
 func receive_damage(amount: int, origin: String) -> void:
 	health -= amount
+	is_receiving_damage = true
 	emit_signal("health_has_changed", health)
-	
+	receiving_damage_timer.start()
+
+	match origin:
+		'LEFT':
+			motion.x = 10
+		'RIGHT':
+			motion.x = -10
+		_:
+			motion.x = 0		
+
+func _on_receive_damage_timer_timeout():
+	receiving_damage_timer.stop()
+	is_receiving_damage = false
+	motion.x = 0

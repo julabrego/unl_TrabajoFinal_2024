@@ -207,5 +207,9 @@ cast_shadow = 3
 mesh = SubResource("SphereMesh_8ty7c")
 surface_material_override/0 = SubResource("StandardMaterial3D_2kbkd")
 
+[node name="ReceiveDamageTimer" type="Timer" parent="."]
+wait_time = 0.15
+
 [connection signal="body_entered" from="Sprite3D/AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="timeout" from="ReceiveDamageTimer" to="." method="_on_receive_damage_timer_timeout"]
