@@ -76,7 +76,8 @@ func _fall(delta: float) -> void:
 
 func _flip() -> void:
 	if motion.x != 0:
-		sprite.flip_h = false if motion.x > 0 else true	#else:
+		sprite.flip_h = false if motion.x > 0 else true	
+		$Sprite3D/AttackHitbox.position.x = 1 if motion.x > 0 else -1
 
 func _stop_movement() -> void:
 	motion.x = 0
@@ -86,8 +87,6 @@ func _is_on_ground() -> bool:
 	return ray_cast.is_colliding() and motion.y <= 0
 	
 func _punch() -> void:
-	print('piña')
-
 	is_attacking = true
 	attack_index = (attack_index + 1) % attack.size()
 
@@ -110,3 +109,8 @@ func _get_horizontal_input_axis() -> float:
 
 func _get_vertical_input_axis() -> float:
 	return Input.get_axis("ui_up", "ui_down")
+
+func _on_attack_hitbox_body_entered(body:Node3D):
+	if body.is_in_group("Enemy"):
+		var origin = 'LEFT' if position.x < body.position.x else 'RIGHT'
+		body.receive_damage(10, origin)

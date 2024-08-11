@@ -5,18 +5,22 @@ extends CharacterBody3D
 @export var JUMP_FORCE := 5
 @export var GRAVITY := 19.8
 @export var target: Node3D = self
+@export var life := 50
+@export var JUMPS_TO_ATTACK := 2
+@export var JUMPS_TO_STOP_ATTACKING := 4
 
 var motion := Vector3()
 var animation := ""
 var is_in_action := false
 var is_jumping_to_target := false
-var is_able_to_jump_to_target := false
+var is_receiving_damage := false
+var hit_origin : String = ""
 var jumps_counter := 0
 
 @onready var sprite : Sprite3D = $Sprite3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var ray_cast : RayCast3D = $RayCast3D
-@onready var timer : Timer = $IdleTimer
+@onready var receiving_damage_timer : Timer = $ReceiveDamageTimer
 
 func _process(delta) -> void:
 	_animations(delta)
@@ -31,9 +35,31 @@ func _physics_process(delta) -> void:
 
 	_move(delta)
 
+func receive_damage(amount: int, origin: String) -> void:
+	life -= amount
+	is_receiving_damage = true
+	receiving_damage_timer.start()
+	jumps_counter = 0
+	is_jumping_to_target = false
+
+	match origin:
+		'LEFT':
+			motion.x = 10
+		'RIGHT':
+			motion.x = -10
+		_:
+			motion.x = 0
+	if life <= 0:
+		queue_free()
+
 func _move(delta: float) -> void:
+	if is_receiving_damage:
+		motion.x *= 0.9
+		motion.y = 0
+	else:
+		_fall(delta)
+
 	velocity = motion
-	_fall(delta)
 	move_and_slide()
 
 func _is_on_ground() -> bool:
@@ -43,10 +69,10 @@ func _handle_jump_direction() -> void:
 	var x_distance = abs(position.x - target.position.x)
 	var z_distance = abs(position.z - target.position.z)
 
-	if is_jumping_to_target and jumps_counter >= 5:
+	if is_jumping_to_target and jumps_counter >= JUMPS_TO_STOP_ATTACKING:
 			_stop_following_target()
 		
-	if (x_distance > 2 or z_distance > 2) and not is_jumping_to_target and jumps_counter >= 3:
+	if (x_distance > 2 or z_distance > 2) and not is_jumping_to_target and jumps_counter >= JUMPS_TO_ATTACK:
 		is_jumping_to_target = true
 		
 	if is_jumping_to_target:
@@ -88,5 +114,7 @@ func _on_visible_area_body_entered(body):
 	if body.is_in_group("Player") and not is_in_action:
 		is_in_action = true
 
-func _on_idle_timer_timeout():
-	is_able_to_jump_to_target = true
+func _on_receive_damage_timer_timeout():
+	receiving_damage_timer.stop()
+	is_receiving_damage = false
+	motion.x = 0
