@@ -87,7 +87,14 @@ size_flags_vertical = 4
 [node name="Subtitle2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Julián Ábrego - Agosto 2024 - Inspirado en la historieta de Rafael Arrieta"
+text = "Flechas direccionales para moverse
+Z para saltar
+X para atacar
+
+
+
+
+Julián Ábrego - Agosto 2024 - Inspirado en la historieta de Rafael Arrieta"
 horizontal_alignment = 1
 vertical_alignment = 1
 
