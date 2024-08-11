@@ -7,67 +7,106 @@ extends CharacterBody3D
 @export var attack := ["Attack_1"]
 
 var attack_index := -1
-var attacking := false
-
+var is_attacking := false
 var motion := Vector3()
 var animation := ""
+var is_control_enabled := true
 
 @onready var sprite : Sprite3D = $Sprite3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var ray_cast : RayCast3D = $RayCast3D
-@onready var speed := SPEED
 
 func _process(delta) -> void:
-	if not is_on_ground():
-		motion.y -= GRAVITY * delta
-	
-	motion.x = Input.get_axis("ui_left", "ui_right") * speed
-	motion.z = Input.get_axis("ui_up", "ui_down") * speed
-	
-	if Input.is_action_just_pressed("ui_jump") and is_on_ground():
-		motion.y = JUMP_FORCE
-		attacking = false
-	elif Input.is_action_just_pressed("ui_attack") and is_on_ground() and not attacking:
-		punch()
-	
-	_flip()
 	_animations(delta)
 
 func _physics_process(delta) -> void:
+	_handle_inputs()
+	_move(delta)
+
+func _handle_inputs() -> void:
+	if not is_control_enabled:
+		return
+
+	_walk()
+	
+	if _is_on_ground():
+		if not is_attacking:
+			if _player_is_triggering_jump():
+				_jump()
+			elif _player_is_triggering_attack():
+				_punch()
+		else:
+			_handle_attack_movement()
+
+func _walk() -> void:
+	motion.x = _get_horizontal_input_axis() * SPEED
+	motion.z = _get_vertical_input_axis() * SPEED
+
+func _jump() -> void:
+	motion.y = JUMP_FORCE
+
+func _move(delta: float) -> void:
 	velocity = motion
+	_fall(delta)
+	_handle_attack_movement()
 	move_and_slide()
+
+func _handle_attack_movement() -> void:
+	if is_attacking:
+		_stop_movement()
+	
+func _animations(delta : float) -> void:
+	_flip()
+	if _is_on_ground():
+		if is_attacking:
+			_set_animation(attack[attack_index])
+		elif motion.x != 0 || motion.z != 0:
+			# _set_animation("walking")
+			_set_animation("idle") 
+		else:
+			# _set_animation("walking")
+			_set_animation("idle")
+		# _set_animation("jumping")
+		# _set_animation("falling")
+
+
+func _fall(delta: float) -> void:
+	if not _is_on_ground():
+		motion.y -= GRAVITY * delta
 
 func _flip() -> void:
 	if motion.x != 0:
-		sprite.flip_h = false if motion.x > 0 else true
+		sprite.flip_h = false if motion.x > 0 else true	#else:
 
-func _animations(delta : float) -> void:
-	if is_on_ground():
-		if (attacking):
-			stop_movement()
-		elif motion.x != 0 || motion.z != 0:
-			set_animation("idle")
-		else:
-			set_animation("idle")
-	#else:
-		#_set_animation("Jump")
-
-func stop_movement() -> void:
+func _stop_movement() -> void:
 	motion.x = 0
 	motion.z = 0
 
-func is_on_ground() -> bool:
-	return ray_cast.is_colliding()
+func _is_on_ground() -> bool:
+	return ray_cast.is_colliding() and motion.y <= 0
 	
-func set_animation(anim: String) -> void:
+func _punch() -> void:
+	print('piña')
+
+	is_attacking = true
+	attack_index = (attack_index + 1) % attack.size()
+
+func end_attack() -> void:
+	is_attacking = false
+
+func _set_animation(anim: String) -> void:
 	if animation != anim:
 		animation = anim
 		animation_player.play(animation)
 
-func punch() -> void:
-	attacking = true
-	attack_index = (attack_index + 1) % attack.size()
-	set_animation(attack[attack_index])
+func _player_is_triggering_jump() -> bool:
+	return Input.is_action_just_pressed("ui_jump")
 
-func end_attack() -> void:
-	attacking = false
+func _player_is_triggering_attack() -> bool:
+	return Input.is_action_just_pressed("ui_attack")
+
+func _get_horizontal_input_axis() -> float:
+	return Input.get_axis("ui_left", "ui_right")
+
+func _get_vertical_input_axis() -> float:
+	return Input.get_axis("ui_up", "ui_down")
