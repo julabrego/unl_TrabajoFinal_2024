@@ -1,0 +1,139 @@
+[gd_scene load_steps=9 format=3 uid="uid://ywt1b5w5f2p0"]
+
+[ext_resource type="Material" uid="uid://bhj8u205csm85" path="res://Assets/Art/Materials/prototype-texture.tres" id="1_2e43v"]
+[ext_resource type="PackedScene" uid="uid://hcs1k41pp446" path="res://addons/proto-csgs/proto_csg_polygon_3d.tscn" id="2_uh1bx"]
+[ext_resource type="Texture2D" uid="uid://b6pvr2d74nr5s" path="res://addons/proto-csgs/textures/light/texture_01.png" id="3_hj3c3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7p6g3"]
+size = Vector3(33, 0.0412598, 21.3416)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hbcmh"]
+size = Vector3(33, 0.0412598, 21.3416)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56138"]
+size = Vector3(33, 0.0412598, 33)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xmodv"]
+size = Vector3(33, 0.0412598, 33)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ejdl"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_hj3c3")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[node name="Level1Scenario" type="Node3D"]
+
+[node name="TerrainBlock" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="TerrainBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.09358)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock/Floor"]
+shape = SubResource("BoxShape3D_7p6g3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TerrainBlock/Floor"]
+mesh = SubResource("BoxMesh_hbcmh")
+surface_material_override/0 = ExtResource("1_2e43v")
+
+[node name="WallBottom" type="StaticBody3D" parent="TerrainBlock"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 8.35161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock/WallBottom"]
+shape = SubResource("BoxShape3D_56138")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TerrainBlock/WallBottom"]
+mesh = SubResource("BoxMesh_xmodv")
+surface_material_override/0 = ExtResource("1_2e43v")
+
+[node name="WallFront" type="StaticBody3D" parent="TerrainBlock"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 15.8795)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock/WallFront"]
+shape = SubResource("BoxShape3D_56138")
+
+[node name="TerrainBlock2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2829, 0, 0)
+
+[node name="Floor" type="StaticBody3D" parent="TerrainBlock2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.09358)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock2/Floor"]
+shape = SubResource("BoxShape3D_7p6g3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TerrainBlock2/Floor"]
+mesh = SubResource("BoxMesh_hbcmh")
+surface_material_override/0 = ExtResource("1_2e43v")
+
+[node name="WallBottom" type="StaticBody3D" parent="TerrainBlock2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 8.35161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock2/WallBottom"]
+shape = SubResource("BoxShape3D_56138")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TerrainBlock2/WallBottom"]
+mesh = SubResource("BoxMesh_xmodv")
+surface_material_override/0 = ExtResource("1_2e43v")
+
+[node name="WallFront" type="StaticBody3D" parent="TerrainBlock2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 15.8795)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock2/WallFront"]
+shape = SubResource("BoxShape3D_56138")
+
+[node name="TerrainBlock3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.3168, 0, 0)
+
+[node name="Floor" type="StaticBody3D" parent="TerrainBlock3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.09358)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock3/Floor"]
+shape = SubResource("BoxShape3D_7p6g3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TerrainBlock3/Floor"]
+mesh = SubResource("BoxMesh_hbcmh")
+surface_material_override/0 = ExtResource("1_2e43v")
+
+[node name="WallBottom" type="StaticBody3D" parent="TerrainBlock3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 8.35161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock3/WallBottom"]
+shape = SubResource("BoxShape3D_56138")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TerrainBlock3/WallBottom"]
+mesh = SubResource("BoxMesh_xmodv")
+surface_material_override/0 = ExtResource("1_2e43v")
+
+[node name="WallFront" type="StaticBody3D" parent="TerrainBlock3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 15.8795)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock3/WallFront"]
+shape = SubResource("BoxShape3D_56138")
+
+[node name="WallLeft" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -16, 16.5446, -0.333609)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft"]
+shape = SubResource("BoxShape3D_56138")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallLeft"]
+mesh = SubResource("BoxMesh_xmodv")
+surface_material_override/0 = ExtResource("1_2e43v")
+
+[node name="WallRight" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 80.3373, 16.5446, -0.33361)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight"]
+shape = SubResource("BoxShape3D_56138")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallRight"]
+mesh = SubResource("BoxMesh_xmodv")
+surface_material_override/0 = ExtResource("1_2e43v")
+
+[node name="ProtoCSGPolygon3D" parent="." instance=ExtResource("2_uh1bx")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 36.0605, 0.0206299, 15.9938)
+snap = 1e-06
+polygon = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 50, 5, 50, 4, 51, 4, 51, 3, 52, 3, 52, 2, 53, 2, 53, 1, 54, 1, 54, 0, 0, 0)
+depth = 41.25
+material = SubResource("StandardMaterial3D_6ejdl")
+block_color = 2

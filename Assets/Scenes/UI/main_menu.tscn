@@ -42,19 +42,20 @@ vertical_alignment = 1
 [node name="Subtitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Prototipo 0.0.1 - 2024-08-11"
+text = "Prototipo 0.0.1
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InvisibleMargin" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="ButtonsGroup" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 4
 
 [node name="ButtonJugar" type="Button" parent="VBoxContainer/ButtonsGroup"]
 custom_minimum_size = Vector2(240, 0)
@@ -70,8 +71,24 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="ButtonCreditos" type="Button" parent="VBoxContainer/ButtonsGroup"]
+visible = false
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "Créditos"
+
+[node name="InvisibleMargin2" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Subtitle2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Julián Ábrego - Agosto 2024 - Inspirado en la historieta de Rafael Arrieta"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/ButtonsGroup/ButtonJugar" to="." method="_on_button_jugar_pressed"]

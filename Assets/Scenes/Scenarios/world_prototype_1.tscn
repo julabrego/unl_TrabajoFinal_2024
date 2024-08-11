@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0l45y17ildax"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Core/GameController.gd" id="1_3y0eu"]
+[ext_resource type="PackedScene" uid="uid://dfpe4pue6oai5" path="res://Assets/Scenes/Scenarios/prototype-scenario.tscn" id="2_firah"]
+[ext_resource type="PackedScene" uid="uid://xtqst0tpaoeo" path="res://Assets/Scenes/Characters/KetchupSmall/ketchup_small.tscn" id="3_8jj18"]
+[ext_resource type="PackedScene" uid="uid://c7n8xlvoc1dep" path="res://Assets/Scenes/Characters/Empanada/empanada.tscn" id="4_ckjyy"]
+[ext_resource type="PackedScene" uid="uid://birenqvp58ih8" path="res://Assets/Scenes/UI/in_game_HUD.tscn" id="5_y8u24"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rhm72"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_vvjwq"]
+sky_material = SubResource("ProceduralSkyMaterial_rhm72")
+
+[sub_resource type="Environment" id="Environment_twjta"]
+background_mode = 2
+sky = SubResource("Sky_vvjwq")
+ambient_light_source = 3
+ambient_light_color = Color(0.775063, 0.775063, 0.775063, 1)
+tonemap_mode = 2
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_3y0eu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_twjta")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.24568, 0.969351, 0, -0.969351, 0.24568, -1.52418, 11.8512, 20.4429)
+light_energy = 0.1
+light_angular_distance = 46.6
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="PrototypeScenario" parent="." instance=ExtResource("2_firah")]
+
+[node name="KetchupSmall" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_8jj18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59067, 1.14051, 13.8652)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_8jj18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2342, 1.14051, 12.6274)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_8jj18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5167, 1.14051, 12.6767)
+target = NodePath("../Empanada")
+
+[node name="Empanada" parent="." groups=["Player"] instance=ExtResource("4_ckjyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76072, 1.21266, 13.6956)
+
+[node name="Camera3D" type="Camera3D" parent="Empanada"]
+transform = Transform3D(1, 0, 0, 0, 0.968091, 0.2506, 0, -0.2506, 0.968091, 0, 5.73022, 18.8)
+fov = 20.9
+size = 8.598
+near = 0.065
+
+[node name="InGameHUD" parent="." instance=ExtResource("5_y8u24")]
+
+[connection signal="empanada_died" from="Empanada" to="." method="_on_empanada_empanada_died"]
+[connection signal="health_has_changed" from="Empanada" to="." method="_on_empanada_health_has_changed"]

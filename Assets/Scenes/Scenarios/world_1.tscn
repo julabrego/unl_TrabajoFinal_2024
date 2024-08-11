@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0l45y17ildax"]
+[gd_scene load_steps=9 format=3 uid="uid://6nchu436bidj"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Core/GameController.gd" id="1_8yv3f"]
-[ext_resource type="PackedScene" uid="uid://dfpe4pue6oai5" path="res://Assets/Scenes/Scenarios/prototype-scenario.tscn" id="1_y18q6"]
 [ext_resource type="PackedScene" uid="uid://c7n8xlvoc1dep" path="res://Assets/Scenes/Characters/Empanada/empanada.tscn" id="2_hn7vq"]
 [ext_resource type="PackedScene" uid="uid://xtqst0tpaoeo" path="res://Assets/Scenes/Characters/KetchupSmall/ketchup_small.tscn" id="3_s7u4f"]
 [ext_resource type="PackedScene" uid="uid://birenqvp58ih8" path="res://Assets/Scenes/UI/in_game_HUD.tscn" id="5_7lsm1"]
+[ext_resource type="PackedScene" uid="uid://ywt1b5w5f2p0" path="res://Assets/Scenes/Scenarios/level_1-scenario.tscn" id="5_rgyck"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rhm72"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -23,6 +23,8 @@ tonemap_mode = 2
 [node name="World" type="Node3D"]
 script = ExtResource("1_8yv3f")
 
+[node name="InGameHUD" parent="." instance=ExtResource("5_7lsm1")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_twjta")
 
@@ -33,10 +35,68 @@ light_angular_distance = 46.6
 shadow_enabled = true
 directional_shadow_mode = 0
 
-[node name="PrototypeScenario" parent="." instance=ExtResource("1_y18q6")]
+[node name="KetchupSmall" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59067, 1.14051, 15.341)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94668, 1.14051, 12.6274)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8966, 1.14051, 12.6767)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall4" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9176, 1.14051, 11.9589)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall5" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9176, 1.14051, 13.6483)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall6" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2905, 1.14051, 13.6483)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall7" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.1141, 3.60419, 13.6483)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall8" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7501, 3.60419, 10.5475)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall9" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7501, 3.60419, 14.7709)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall10" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.2257, 3.60419, 14.7709)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall11" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.2257, 3.60419, 12.439)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall12" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.172, 3.60419, 12.439)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall13" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.172, 3.60419, 14.4434)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall14" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.2821, 1.74213, 14.4434)
+target = NodePath("../Empanada")
+
+[node name="KetchupSmall15" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.2821, 1.74213, 12.3361)
+target = NodePath("../Empanada")
 
 [node name="Empanada" parent="." groups=["Player"] instance=ExtResource("2_hn7vq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76072, 1.21266, 13.6956)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2124, 1.21266, 13.6956)
 
 [node name="Camera3D" type="Camera3D" parent="Empanada"]
 transform = Transform3D(1, 0, 0, 0, 0.968091, 0.2506, 0, -0.2506, 0.968091, 0, 5.73022, 18.8)
@@ -44,12 +104,7 @@ fov = 20.9
 size = 8.598
 near = 0.065
 
-[node name="KetchupSmall" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59067, 1.14051, 13.8652)
-target = NodePath("../Empanada")
-health = null
-DISTANCE_TRESHOLD = null
+[node name="Level1Scenario" parent="." instance=ExtResource("5_rgyck")]
 
-[node name="InGameHUD" parent="." instance=ExtResource("5_7lsm1")]
-
+[connection signal="empanada_died" from="Empanada" to="." method="_on_empanada_empanada_died"]
 [connection signal="health_has_changed" from="Empanada" to="." method="_on_empanada_health_has_changed"]

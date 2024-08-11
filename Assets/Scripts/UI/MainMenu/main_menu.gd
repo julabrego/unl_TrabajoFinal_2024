@@ -1,9 +1,7 @@
 extends Control
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var scene_tree = get_tree()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_button_jugar_pressed():
+	scene_tree.change_scene_to_file("res://Assets/Scenes/Scenarios/world_1.tscn")
+

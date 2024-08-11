@@ -2,9 +2,10 @@ class_name EmpanadaPlayer
 extends CharacterBody3D
 
 signal health_has_changed(health)
+signal empanada_died()
 
 @export var SPEED := 4
-@export var JUMP_FORCE := 8
+@export var JUMP_FORCE := 10
 @export var GRAVITY := 19.8
 @export var attack := ["Attack_1"]
 
@@ -149,7 +150,10 @@ func receive_damage(amount: int, origin: String) -> void:
 		'RIGHT':
 			motion.x = -10
 		_:
-			motion.x = 0		
+			motion.x = 0
+
+	if health <= 0:
+		emit_signal("empanada_died")
 
 func _on_receive_damage_timer_timeout():
 	receiving_damage_timer.stop()
