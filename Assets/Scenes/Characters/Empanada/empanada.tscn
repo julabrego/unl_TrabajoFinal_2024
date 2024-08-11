@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7n8xlvoc1dep"]
+[gd_scene load_steps=14 format=3 uid="uid://c7n8xlvoc1dep"]
 
 [ext_resource type="Texture2D" uid="uid://qbnrh3wwc7f7" path="res://Assets/Resources/Textures/Empanadas/EmpanadaSketch.png" id="1_03la8"]
 [ext_resource type="Script" path="res://Assets/Scripts/Characters/Empanada/empanada-movement.gd" id="1_5rpsi"]
@@ -13,6 +13,10 @@ height = 0.381
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7no7e"]
 radius = 0.365421
+height = 2.17886
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rsxwb"]
+radius = 0.390332
 height = 2.17886
 
 [sub_resource type="Animation" id="Animation_seguq"]
@@ -178,9 +182,14 @@ shape = SubResource("SphereShape3D_7hrqh")
 visible = false
 mesh = SubResource("SphereMesh_4r5li")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000934005, 0)
 shape = SubResource("CapsuleShape3D_7no7e")
+
+[node name="HitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("CapsuleShape3D_rsxwb")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11, 0)
@@ -199,3 +208,4 @@ mesh = SubResource("SphereMesh_8ty7c")
 surface_material_override/0 = SubResource("StandardMaterial3D_2kbkd")
 
 [connection signal="body_entered" from="Sprite3D/AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

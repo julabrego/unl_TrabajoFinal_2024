@@ -1,6 +1,8 @@
 class_name EmpanadaPlayer
 extends CharacterBody3D
 
+signal health_has_changed(health)
+
 @export var SPEED := 4
 @export var JUMP_FORCE := 8
 @export var GRAVITY := 19.8
@@ -11,6 +13,7 @@ var is_attacking := false
 var motion := Vector3()
 var animation := ""
 var is_control_enabled := true
+var health := 100
 
 @onready var sprite : Sprite3D = $Sprite3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -22,6 +25,10 @@ func _process(delta) -> void:
 func _physics_process(delta) -> void:
 	_handle_inputs()
 	_move(delta)
+
+func set_health(value: int) -> void:
+	health = value
+	emit_signal("health_has_changed", health)
 
 func _handle_inputs() -> void:
 	if not is_control_enabled:
@@ -114,3 +121,13 @@ func _on_attack_hitbox_body_entered(body:Node3D):
 	if body.is_in_group("Enemy"):
 		var origin = 'LEFT' if position.x < body.position.x else 'RIGHT'
 		body.receive_damage(10, origin)
+
+func _on_hit_box_body_entered(body:Node3D):
+	if body.is_in_group("Enemy"):
+		var origin = 'LEFT' if body.position.x < position.x else 'RIGHT'
+		receive_damage(body.get_current_attack_damage(), origin)
+
+func receive_damage(amount: int, origin: String) -> void:
+	health -= amount
+	emit_signal("health_has_changed", health)
+	

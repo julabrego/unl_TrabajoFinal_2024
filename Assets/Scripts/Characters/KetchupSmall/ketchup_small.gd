@@ -16,6 +16,7 @@ var is_jumping_to_target := false
 var is_receiving_damage := false
 var hit_origin : String = ""
 var jumps_counter := 0
+var current_attack_damage := 10
 
 @onready var sprite : Sprite3D = $Sprite3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -51,6 +52,9 @@ func receive_damage(amount: int, origin: String) -> void:
 			motion.x = 0
 	if life <= 0:
 		queue_free()
+
+func get_current_attack_damage() -> int:
+	return current_attack_damage
 
 func _move(delta: float) -> void:
 	if is_receiving_damage:
