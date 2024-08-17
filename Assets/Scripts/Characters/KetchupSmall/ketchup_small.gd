@@ -55,7 +55,10 @@ func receive_damage(amount: int, origin: String) -> void:
 			motion.x = 0
 
 	if health <= 0:
+		Global.add_to_score(200)
 		queue_free()
+	else:
+		Global.add_to_score(50)
 
 func get_current_attack_damage() -> int:
 	return current_attack_damage

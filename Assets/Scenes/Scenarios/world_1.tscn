@@ -47,19 +47,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94668, 1.14051, 12.6274)
 target = NodePath("../Empanada")
 
 [node name="KetchupSmall3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8966, 1.14051, 12.6767)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0343, 0.898847, 12.6767)
 target = NodePath("../Empanada")
 
 [node name="KetchupSmall4" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9176, 1.14051, 11.9589)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0553, 0.898847, 11.9589)
 target = NodePath("../Empanada")
 
 [node name="KetchupSmall5" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9176, 1.14051, 13.6483)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0553, 0.898847, 13.6483)
 target = NodePath("../Empanada")
 
 [node name="KetchupSmall6" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2905, 1.14051, 13.6483)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2905, 3.33058, 13.6483)
 target = NodePath("../Empanada")
 
 [node name="KetchupSmall7" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_s7u4f")]
@@ -99,7 +99,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.2821, 1.74213, 12.3361)
 target = NodePath("../Empanada")
 
 [node name="Empanada" parent="." groups=["Player"] instance=ExtResource("2_hn7vq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2124, 1.21266, 13.6956)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1663, 1.21266, 13.6956)
+floor_max_angle = 2.17468
 
 [node name="Camera3D" type="Camera3D" parent="Empanada"]
 transform = Transform3D(1, 0, 0, 0, 0.968091, 0.2506, 0, -0.2506, 0.968091, 0, 5.73022, 18.8)
@@ -110,7 +111,7 @@ near = 0.065
 [node name="Level1Scenario" parent="." instance=ExtResource("5_rgyck")]
 
 [node name="EndOfLevelArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.587, 0, 13.2273)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.587, -9.05991e-06, 13.2273)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EndOfLevelArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572586, 2.52759, -0.170013)

@@ -161,9 +161,9 @@ mesh = SubResource("BoxMesh_xmodv")
 surface_material_override/0 = ExtResource("1_2e43v")
 
 [node name="ProtoCSGPolygon3D" parent="." instance=ExtResource("2_uh1bx")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 36.0605, 0.0206299, 15.9938)
+transform = Transform3D(0.885, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 18.026, 0.021, 15.994)
 snap = 1e-06
-polygon = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 50, 5, 50, 4, 51, 4, 51, 3, 52, 3, 52, 2, 53, 2, 53, 1, 54, 1, 54, 0, 0, 0)
+polygon = PackedVector2Array(0, 0, 3.4213, 1.00255, 3.41498, 2.03193, 5, 2, 5, 3, 7, 3, 7, 4, 9, 4, 9, 5, 11, 5, 50, 5, 50, 4, 51, 4, 51, 3, 52, 3, 52, 2, 53, 2, 53, 1, 54, 1, 54, 0, 0, 0)
 depth = 41.25
 material = SubResource("StandardMaterial3D_6ejdl")
 block_color = 2

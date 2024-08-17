@@ -14,18 +14,65 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_odbd7")
 
-[node name="Header" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0130208
-anchor_top = 0.0123457
-anchor_right = 0.986111
-anchor_bottom = 0.0756173
-grow_horizontal = 2
-metadata/_edit_use_anchors_ = true
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 706.0
+offset_bottom = 50.0
+
+[node name="Vidas" type="Label" parent="Header"]
+layout_mode = 2
+text = "Vidas: "
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="LifesLabel" type="Label" parent="Header"]
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="<Divider>" type="Label" parent="Header"]
+layout_mode = 2
+text = "   |   "
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="Salud" type="Label" parent="Header"]
+layout_mode = 2
+text = "Salud: "
+label_settings = SubResource("LabelSettings_3yeqg")
 
 [node name="HealthLabel" type="Label" parent="Header"]
 layout_mode = 2
-size_flags_vertical = 1
 text = "100"
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="<Divider>2" type="Label" parent="Header"]
+layout_mode = 2
+text = "   |   "
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="Score" type="Label" parent="Header"]
+layout_mode = 2
+text = "Score:"
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="ScoreLabel" type="Label" parent="Header"]
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="<Divider>3" type="Label" parent="Header"]
+layout_mode = 2
+text = "   |   "
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="HighScore" type="Label" parent="Header"]
+layout_mode = 2
+text = "High Score:"
+label_settings = SubResource("LabelSettings_3yeqg")
+
+[node name="HighScoreLabel" type="Label" parent="Header"]
+layout_mode = 2
+text = "1000"
 label_settings = SubResource("LabelSettings_3yeqg")

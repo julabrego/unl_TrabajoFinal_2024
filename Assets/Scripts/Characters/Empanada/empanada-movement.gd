@@ -31,8 +31,8 @@ func _physics_process(delta) -> void:
 	_move(delta)
 
 func set_health(value: int) -> void:
-	health = value
-	emit_signal("health_has_changed", health)
+	Global.player_health = value
+	emit_signal("health_has_changed", Global.player_health)
 
 func _handle_inputs() -> void:
 	if not is_control_enabled:
