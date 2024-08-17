@@ -4,8 +4,8 @@ extends Node3D
 @onready var in_game_hud = $InGameHUD
 @onready var player = $Empanada
 @onready var scene_tree = get_tree()
-
 @export var player_health := 100
+@export var lifes := 3
 
 func _ready():
 	if player.has_method("set_health"):
@@ -24,3 +24,7 @@ func _on_empanada_health_has_changed(health:Variant):
 
 func _on_empanada_empanada_died():
 	_game_over()
+
+func _on_end_of_level_area_body_entered(body:Node3D):
+	if body.is_in_group("Player"):
+		_victory()

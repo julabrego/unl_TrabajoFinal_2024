@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cmnqweo128a8" path="res://Assets/Resources/Textures/Empanadas/EmpanadaSketchGolpe1.png" id="3_qa8pl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7hrqh"]
-radius = 0.181236
+radius = 0.381
 
 [sub_resource type="SphereMesh" id="SphereMesh_4r5li"]
-radius = 0.181
+radius = 0.381
 height = 0.381
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7no7e"]

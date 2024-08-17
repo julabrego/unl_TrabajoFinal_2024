@@ -9,6 +9,7 @@ signal empanada_died()
 @export var GRAVITY := 19.8
 @export var attack := ["Attack_1"]
 
+var current_attack_damage := 10
 var attack_index := -1
 var is_attacking := false
 var motion := Vector3()
@@ -60,7 +61,6 @@ func _move(delta: float) -> void:
 	if is_receiving_damage:
 		motion.x *= 0.9
 		motion.y = 0
-		print(motion.x)
 	else:
 		_fall(delta)
 		_handle_attack_movement()
@@ -129,7 +129,7 @@ func _get_vertical_input_axis() -> float:
 func _on_attack_hitbox_body_entered(body:Node3D):
 	if body.is_in_group("Enemy"):
 		var origin = 'LEFT' if position.x < body.position.x else 'RIGHT'
-		body.receive_damage(10, origin)
+		body.receive_damage(current_attack_damage, origin)
 
 func _on_hit_box_body_entered(body:Node3D):
 	if body.is_in_group("Enemy"):

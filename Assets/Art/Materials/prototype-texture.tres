@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bhj8u205csm85"]
 
-[ext_resource type="Texture2D" uid="uid://c8003bqw5wp24" path="res://Assets/Resources/texture_07.png" id="1_mi3u6"]
+[ext_resource type="Texture2D" uid="uid://c8003bqw5wp24" path="res://Assets/Art/texture_07.png" id="1_mi3u6"]
 
 [resource]
 vertex_color_use_as_albedo = true

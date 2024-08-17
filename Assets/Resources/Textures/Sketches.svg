@@ -26,13 +26,13 @@
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:zoom="2.0491366"
-     inkscape:cx="892.32706"
-     inkscape:cy="1546.749"
-     inkscape:window-width="1920"
-     inkscape:window-height="1009"
-     inkscape:window-x="1912"
-     inkscape:window-y="-8"
+     inkscape:zoom="1.4489584"
+     inkscape:cx="230.16534"
+     inkscape:cy="1535.9309"
+     inkscape:window-width="1536"
+     inkscape:window-height="793"
+     inkscape:window-x="-8"
+     inkscape:window-y="-6"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer2"
      inkscape:snap-grids="false"
@@ -312,6 +312,34 @@
          cy="1550.6532"
          r="8.5401821"
          transform="scale(-1,1)" />
+    </g>
+    <g
+       id="g9487"
+       transform="translate(-35.197698)"
+       inkscape:export-filename="D:\gameDev\TrabajoFinal\prototipos\comidas_autoctonas_prototipo\Assets\Resources\Textures\sign.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         id="rect926"
+         style="fill:#e77131;stroke:#000000;stroke-width:1.14956;stroke-linecap:round"
+         d="m 175.20308,1432.4215 13.9436,1.4102 -16.81567,163.117 -13.7606,-0.068 z"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#e77131;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 97.502732,1464.5696 142.040708,6.4299 37.7549,-23.1826 -31.7833,-29.2127 -153.793548,-6.4421 11.768338,24.0043 z"
+         id="path1041" />
+      <text
+         xml:space="preserve"
+         style="font-size:26.5062px;line-height:1.25;font-family:sans-serif;stroke-width:0.552212"
+         x="250.36148"
+         y="1370.5922"
+         id="text9203"
+         transform="matrix(0.95484668,0.08009397,-0.08723434,1.0399712,0,0)"><tspan
+           sodipodi:role="line"
+           id="tspan9201"
+           x="250.36148"
+           y="1370.5922"
+           style="stroke-width:0.552212">Por aquí...</tspan></text>
     </g>
   </g>
 </svg>

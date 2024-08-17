@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6nchu436bidj"]
+[gd_scene load_steps=10 format=3 uid="uid://6nchu436bidj"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Core/GameController.gd" id="1_8yv3f"]
 [ext_resource type="PackedScene" uid="uid://c7n8xlvoc1dep" path="res://Assets/Scenes/Characters/Empanada/empanada.tscn" id="2_hn7vq"]
@@ -19,6 +19,9 @@ sky = SubResource("Sky_vvjwq")
 ambient_light_source = 3
 ambient_light_color = Color(0.775063, 0.775063, 0.775063, 1)
 tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftux4"]
+size = Vector3(1, 6.05518, 4.44135)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_8yv3f")
@@ -106,5 +109,13 @@ near = 0.065
 
 [node name="Level1Scenario" parent="." instance=ExtResource("5_rgyck")]
 
+[node name="EndOfLevelArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.587, 0, 13.2273)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndOfLevelArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572586, 2.52759, -0.170013)
+shape = SubResource("BoxShape3D_ftux4")
+
 [connection signal="empanada_died" from="Empanada" to="." method="_on_empanada_empanada_died"]
 [connection signal="health_has_changed" from="Empanada" to="." method="_on_empanada_health_has_changed"]
+[connection signal="body_entered" from="EndOfLevelArea" to="." method="_on_end_of_level_area_body_entered"]

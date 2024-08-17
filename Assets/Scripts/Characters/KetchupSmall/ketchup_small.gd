@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var JUMP_FORCE := 5
 @export var GRAVITY := 19.8
 @export var target: Node3D = self
-@export var health := 50
+@export var health := 30
 @export var JUMPS_TO_ATTACK := 2
 @export var JUMPS_TO_STOP_ATTACKING := 4
 @export var DISTANCE_TRESHOLD := 0.5
@@ -17,7 +17,7 @@ var is_jumping_to_target := false
 var is_receiving_damage := false
 var hit_origin : String = ""
 var jumps_counter := 0
-var current_attack_damage := 10
+var current_attack_damage := 5
 
 @onready var sprite : Sprite3D = $Sprite3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -90,6 +90,7 @@ func _handle_jump_direction() -> void:
 		
 	if (x_distance > DISTANCE_TRESHOLD or z_distance > DISTANCE_TRESHOLD) and not is_jumping_to_target and jumps_counter >= JUMPS_TO_ATTACK:
 		is_jumping_to_target = true
+		current_attack_damage = 5
 		
 	if is_jumping_to_target:
 		_follow_target()
