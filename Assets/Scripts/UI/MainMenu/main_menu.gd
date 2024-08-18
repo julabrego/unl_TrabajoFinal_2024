@@ -7,5 +7,6 @@ func _ready():
 
 func _on_button_jugar_pressed():
 	Global.score = 0
+	Global.lifes = 3
 	scene_tree.change_scene_to_file("res://Assets/Scenes/Scenarios/world_1.tscn")
 

@@ -8,7 +8,7 @@ extends CharacterBody3D
 @export var health := 30
 @export var JUMPS_TO_ATTACK := 2
 @export var JUMPS_TO_STOP_ATTACKING := 4
-@export var DISTANCE_TRESHOLD := 0.5
+@export var DISTANCE_TRESHOLD := 0.1
 
 var motion := Vector3()
 var animation := ""

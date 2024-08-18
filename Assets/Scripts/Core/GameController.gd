@@ -27,7 +27,7 @@ func _on_empanada_health_has_changed(health:Variant):
 	in_game_hud.update_health(health)
 
 func _on_empanada_empanada_died():
-	if Global.lifes > 0:
+	if Global.lifes > 1:
 		Global.change_lifes(Global.lifes - 1)
 		scene_tree.reload_current_scene()
 	else:
