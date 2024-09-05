@@ -74,12 +74,13 @@ func _handle_attack_movement() -> void:
 	
 func _animations(delta : float) -> void:
 	_flip()
-	if _is_on_ground():
+	if is_receiving_damage:
+		_set_animation("Receiving_damage")
+	elif _is_on_ground():
 		if is_attacking:
 			_set_animation(attack[attack_index])
 		elif motion.x != 0 || motion.z != 0:
-			# _set_animation("walking")
-			_set_animation("idle") 
+			_set_animation("Walking")
 		else:
 			# _set_animation("walking")
 			_set_animation("idle")
