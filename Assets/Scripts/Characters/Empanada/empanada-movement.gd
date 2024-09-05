@@ -7,7 +7,7 @@ signal empanada_died()
 @export var SPEED := 4
 @export var JUMP_FORCE := 10
 @export var GRAVITY := 19.8
-@export var attack := ["Attack_1"]
+@export var attack := ["Attack_1", "Attack_2"]
 
 var current_attack_damage := 10
 var attack_index := -1
