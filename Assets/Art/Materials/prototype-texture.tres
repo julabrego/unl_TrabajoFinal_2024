@@ -4,6 +4,7 @@
 
 [resource]
 vertex_color_use_as_albedo = true
+albedo_color = Color(0.192157, 0.811765, 0.921569, 1)
 albedo_texture = ExtResource("1_mi3u6")
 uv1_scale = Vector3(30, 30, 30)
 texture_filter = 5

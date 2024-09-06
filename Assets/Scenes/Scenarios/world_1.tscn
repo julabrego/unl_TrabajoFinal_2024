@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6nchu436bidj"]
+[gd_scene load_steps=20 format=3 uid="uid://6nchu436bidj"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Core/GameController.gd" id="1_8yv3f"]
 [ext_resource type="PackedScene" uid="uid://c7n8xlvoc1dep" path="res://Assets/Scenes/Characters/Empanada/empanada.tscn" id="2_hn7vq"]
@@ -11,11 +11,19 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="9_s1ir3"]
 [ext_resource type="Texture2D" uid="uid://835paqmo7ng1" path="res://Assets/Resources/Textures/Teenage-Mutant-Ninja-Turtles-Shredders-Revenge.jpg" id="10_cd7in"]
 
-[sub_resource type="Environment" id="Environment_43i5g"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6avqm"]
+sky_curve = 0.332871
+sun_angle_max = 53.77
+
+[sub_resource type="Sky" id="Sky_5aqqq"]
+sky_material = SubResource("ProceduralSkyMaterial_6avqm")
+
+[sub_resource type="Environment" id="Environment_ad74a"]
 background_energy_multiplier = 2.1
+sky = SubResource("Sky_5aqqq")
 reflected_light_source = 2
 
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_qm88m"]
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_tt8ht"]
 exposure_multiplier = 2.41
 
 [sub_resource type="Resource" id="Resource_5wpq5"]
@@ -38,6 +46,7 @@ far = 4000.0
 
 [sub_resource type="Environment" id="Environment_q20sm"]
 background_energy_multiplier = 2.1
+sky = SubResource("Sky_5aqqq")
 reflected_light_source = 2
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_sepef"]
@@ -52,12 +61,15 @@ script = ExtResource("1_8yv3f")
 [node name="InGameHUD" parent="." instance=ExtResource("5_7lsm1")]
 
 [node name="Empanada" parent="." groups=["Player"] instance=ExtResource("2_hn7vq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7788, 1.21266, 13.6956)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4419, 1.21266, 13.6956)
+SPEED = 5
+JUMP_FORCE = 20
+GRAVITY = 60.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866024, 0.499999, 0, -0.499999, 0.866024, -13.7788, 10.0577, 25.6906)
-environment = SubResource("Environment_43i5g")
-attributes = SubResource("CameraAttributesPhysical_qm88m")
+transform = Transform3D(1, 0, 0, 0, 0.866024, 0.499999, 0, -0.499999, 0.866024, -11.4419, 10.0577, 25.6906)
+environment = SubResource("Environment_ad74a")
+attributes = SubResource("CameraAttributesPhysical_tt8ht")
 projection = 1
 current = true
 size = 9.351
@@ -66,7 +78,7 @@ size = 9.351
 script = ExtResource("6_sv8yj")
 
 [node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(1, 0, 0, 0, 0.866024, 0.499999, 0, -0.499999, 0.866024, -13.7788, 10.0577, 25.6906)
+transform = Transform3D(1, 0, 0, 0, 0.866024, 0.499999, 0, -0.499999, 0.866024, -11.4419, 10.0577, 25.6906)
 script = ExtResource("7_1nq8k")
 follow_mode = 2
 follow_target = NodePath("../Empanada")
@@ -77,6 +89,7 @@ environment = SubResource("Environment_q20sm")
 attributes = SubResource("CameraAttributesPhysical_sepef")
 follow_offset = Vector3(0, 8.845, 11.995)
 follow_damping = true
+follow_damping_value = Vector3(0.1, 100, 0.1)
 
 [node name="Enemies" type="Node3D" parent="."]
 
