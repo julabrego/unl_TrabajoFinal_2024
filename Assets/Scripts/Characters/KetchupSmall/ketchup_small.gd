@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var JUMP_FORCE := 5
 @export var GRAVITY := 19.8
 @export var target: Node3D = self
-@export var health := 30
+@export var health := 50
 @export var JUMPS_TO_ATTACK := 2
 @export var JUMPS_TO_STOP_ATTACKING := 4
 @export var DISTANCE_TRESHOLD := 0.1
@@ -28,6 +28,8 @@ func _process(delta) -> void:
 	_animations(delta)
 
 func _physics_process(delta) -> void:
+	_move(delta)
+	
 	if not is_in_action:
 		return
 		
@@ -35,7 +37,6 @@ func _physics_process(delta) -> void:
 		_handle_jump_direction()
 		_jump()
 
-	_move(delta)
 
 func is_attacking() -> bool:
 	return is_jumping_to_target
@@ -120,12 +121,26 @@ func _point_to(target: Vector3):
 
 func _animations(delta : float) -> void:
 	_flip()
-	pass
+	
+	if is_receiving_damage:
+		_set_animation("Receiving_damage")
+	elif not is_in_action:
+		_set_animation("idle")
+	else:
+		if not is_attacking():
+			_set_animation("Jumping")
+		else:
+			_set_animation("Attack_1")
 
 func _flip() -> void:
 	if motion.x != 0:
-		sprite.flip_h = false if motion.x > 0 else true
-	
+		sprite.flip_h = true if motion.x > 0 else false
+
+func _set_animation(anim: String) -> void:
+	if animation != anim:
+		animation = anim
+		animation_player.play(animation)
+		
 func _stop_movement() -> void:
 	motion.x = 0
 	motion.z = 0

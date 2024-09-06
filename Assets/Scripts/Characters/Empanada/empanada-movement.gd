@@ -84,8 +84,8 @@ func _animations(delta : float) -> void:
 		else:
 			# _set_animation("walking")
 			_set_animation("idle")
-		# _set_animation("jumping")
-		# _set_animation("falling")
+	elif motion.y != 0:
+		_set_animation("Jumping")
 
 func _fall(delta: float) -> void:
 	if not _is_on_ground():
