@@ -30,7 +30,7 @@ size = Vector3(1, 6.05518, 4.44135)
 [sub_resource type="Environment" id="Environment_fwxe6"]
 background_camera_feed_id = 10
 
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_2qy5v"]
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_acxdf"]
 exposure_multiplier = 2.41
 
 [sub_resource type="Resource" id="Resource_5wpq5"]
@@ -144,7 +144,7 @@ shape = SubResource("BoxShape3D_ftux4")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.971133, 0.238533, 0, -0.238533, 0.971133, -13.7788, 5.16766, 25.6906)
 environment = SubResource("Environment_fwxe6")
-attributes = SubResource("CameraAttributesPhysical_2qy5v")
+attributes = SubResource("CameraAttributesPhysical_acxdf")
 current = true
 size = 9.351
 
@@ -161,6 +161,7 @@ tween_on_load = false
 camera_3d_resource = SubResource("Resource_6ta6x")
 attributes = SubResource("CameraAttributesPhysical_sepef")
 follow_offset = Vector3(0, 3.955, 11.995)
+follow_damping = true
 
 [connection signal="empanada_died" from="Empanada" to="." method="_on_empanada_empanada_died"]
 [connection signal="health_has_changed" from="Empanada" to="." method="_on_empanada_health_has_changed"]
