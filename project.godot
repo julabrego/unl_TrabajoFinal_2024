@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Assets/Scenes/Core/Global.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [importer_defaults]
 

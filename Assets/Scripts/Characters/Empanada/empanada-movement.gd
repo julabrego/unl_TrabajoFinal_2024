@@ -18,6 +18,8 @@ var is_control_enabled := true
 var health := 100
 var is_receiving_damage := false
 
+var is_facing_right = true
+
 @onready var sprite : Sprite3D = $Sprite3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var ray_cast : RayCast3D = $RayCast3D
@@ -93,8 +95,9 @@ func _fall(delta: float) -> void:
 
 func _flip() -> void:
 	if motion.x != 0 and not is_receiving_damage:
-		sprite.flip_h = false if motion.x > 0 else true	
-		$Sprite3D/AttackHitbox.position.x = 1 if motion.x > 0 else -1
+		$".".scale.x = 1 if motion.x > 0 else -1
+		#sprite.flip_h = false if motion.x > 0 else true
+		#$Sprite3D/AttackHitbox.position.x = 1 if motion.x > 0 else -1
 
 func _stop_movement() -> void:
 	motion.x = 0

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c2cskfpny1nb5" path="res://Assets/Resources/Textures/Empanadas/empanada_jump_spritesheet.png" id="7_tpt2a"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7hrqh"]
-radius = 0.198209
+radius = 0.397743
 
 [sub_resource type="SphereMesh" id="SphereMesh_4r5li"]
 
@@ -58,7 +58,7 @@ tracks/2/path = NodePath("Sprite3D/AttackHitbox:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.00290622, 0.0730829, 0.135579),
+"times": PackedFloat32Array(0.00290622, 0.0558051, 0.135579),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -94,10 +94,10 @@ tracks/5/path = NodePath("Sprite3D/AttackHitbox:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.0714791),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.70419, 0.0627175, 0), Vector3(0.951907, 0.157086, 0)]
+"times": PackedFloat32Array(0.056042, 0.0637948, 0.0714791),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector3(0.724373, 0.132488, 0), Vector3(0.86, 0.137, 0), Vector3(0.951907, 0.157086, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6u4hh"]
@@ -477,14 +477,14 @@ region_enabled = true
 region_rect = Rect2(0, 0, 178, 221)
 
 [node name="AttackHitbox" type="Area3D" parent="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.910621, 0.14529, 0)
+transform = Transform3D(0.558628, 0, 0, 0, 1, 0, 0, 0, 1, 0.910621, 0.14529, 0)
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/AttackHitbox"]
 shape = SubResource("SphereShape3D_7hrqh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sprite3D/AttackHitbox"]
-transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, 0, 0)
+transform = Transform3D(0.795, 0, 0, 0, 0.795, 0, 0, 0, 0.795, 0, 0, 0)
 visible = false
 mesh = SubResource("SphereMesh_4r5li")
 
