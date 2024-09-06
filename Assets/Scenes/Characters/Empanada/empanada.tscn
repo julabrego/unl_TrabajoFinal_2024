@@ -8,10 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://upr04mc3v6fk" path="res://Assets/Resources/Textures/Empanadas/empanada_hit_spritesheet.png" id="6_gjsth"]
 [ext_resource type="Texture2D" uid="uid://c2cskfpny1nb5" path="res://Assets/Resources/Textures/Empanadas/empanada_jump_spritesheet.png" id="7_tpt2a"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7hrqh"]
-radius = 0.397743
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_es5is"]
+radius = 0.211405
+height = 1.36706
 
-[sub_resource type="SphereMesh" id="SphereMesh_4r5li"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_68o3x"]
+radius = 0.211405
+height = 1.36706
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7no7e"]
 radius = 0.365421
@@ -472,21 +475,23 @@ ao_enabled = true
 script = ExtResource("1_5rpsi")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
 texture = ExtResource("1_03la8")
 region_enabled = true
 region_rect = Rect2(0, 0, 178, 221)
 
 [node name="AttackHitbox" type="Area3D" parent="Sprite3D"]
-transform = Transform3D(0.558628, 0, 0, 0, 1, 0, 0, 0, 1, 0.910621, 0.14529, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.910621, 0.14529, 0)
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/AttackHitbox"]
-shape = SubResource("SphereShape3D_7hrqh")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_es5is")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sprite3D/AttackHitbox"]
-transform = Transform3D(0.795, 0, 0, 0, 0.795, 0, 0, 0, 0.795, 0, 0, 0)
+transform = Transform3D(0.795, 0, 0, 0, -3.47506e-08, -0.795, 0, 0.795, -3.47506e-08, 0, 0, 0)
 visible = false
-mesh = SubResource("SphereMesh_4r5li")
+mesh = SubResource("CapsuleMesh_68o3x")
 
 [node name="CollisionBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000934005, 0)

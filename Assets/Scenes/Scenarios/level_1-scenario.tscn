@@ -53,6 +53,7 @@ surface_material_override/0 = ExtResource("1_2e43v")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 8.35161)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock/WallBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.445, 0)
 shape = SubResource("BoxShape3D_56138")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TerrainBlock/WallBottom"]
@@ -60,7 +61,7 @@ mesh = SubResource("BoxMesh_xmodv")
 surface_material_override/0 = ExtResource("1_2e43v")
 
 [node name="WallFront" type="StaticBody3D" parent="TerrainBlock"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 15.8795)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.545, 17.4)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock/WallFront"]
 shape = SubResource("BoxShape3D_56138")
@@ -82,6 +83,7 @@ surface_material_override/0 = ExtResource("1_2e43v")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 8.35161)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock2/WallBottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.445, 0)
 shape = SubResource("BoxShape3D_56138")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TerrainBlock2/WallBottom"]
@@ -89,7 +91,7 @@ mesh = SubResource("BoxMesh_xmodv")
 surface_material_override/0 = ExtResource("1_2e43v")
 
 [node name="WallFront" type="StaticBody3D" parent="TerrainBlock2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.5446, 15.8795)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 16.545, 17.4)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TerrainBlock2/WallFront"]
 shape = SubResource("BoxShape3D_56138")
